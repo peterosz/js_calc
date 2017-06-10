@@ -76,6 +76,14 @@ body {
     background-color: #E18A07;
 }
 
+.numbers span:active {
+    background-color: grey;
+}
+
+.operators span:active {
+    background-color: grey;
+}
+
 * {
   box-sizing: border-box;
 }
