@@ -1,5 +1,5 @@
 window.onload = function() {
-
+	
 	var keys = document.querySelectorAll('.calculator span');
 	var operators = ['+', '-', '*', '/', '%'];
 	var decimalAdded = false;

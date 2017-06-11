@@ -1,5 +1,6 @@
 body {
     background: radial-gradient(white);
+    background-image: url('calc_wall.jpg')
 }
 
 .calculator {
@@ -9,6 +10,7 @@ body {
     background-color: #C0C0C0;
     border-radius: 8px;
     padding: 30px;
+    box-shadow: 0px 2px 8px black;
 }
 
 #screen {
@@ -44,6 +46,7 @@ body {
     font-size: 25px;
     padding-top: 6px;
     cursor: pointer;
+    box-shadow: 0px 2px 4px black;
 }
 
 #zero {
@@ -67,6 +70,7 @@ body {
     font-size: 25px;
     padding-top: 6px;
     cursor: pointer;
+    box-shadow: 0px 2px 4px black;
 }
 
 .operators span:first-child {
@@ -79,12 +83,9 @@ body {
     background-color: #E18A07;
 }
 
-.numbers span:active {
+.numbers span:active, .operators span:active {
     background-color: grey;
-}
-
-.operators span:active {
-    background-color: grey;
+    transform: translateY(2px);
 }
 
 * {
