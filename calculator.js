@@ -1,60 +1,59 @@
-var keys = document.querySelectorAll('.calculator span');
-var operators = ['+', '-', '*', '/', 'n*n'];
-var decimalAdded = false;
+window.onload = function() {
 
-for(var i = 0; i < keys.length; i++) {
-	keys[i].onclick = function(e) {
-		var input = document.querySelector('#screen');
-		var inputVal = input.innerHTML;
-		var btnVal = this.innerHTML;
+	var keys = document.querySelectorAll('.calculator span');
+	var operators = ['+', '-', '*', '/', '%'];
+	var decimalAdded = false;
 
-		if(btnVal == 'C') {
-			input.innerHTML = '';
-			decimalAdded = false;
-		}
-		
-		else if(btnVal == '=') {
-			var equation = inputVal;
-			var lastChar = equation[equation.length - 1];
-								
-			if(operators.indexOf(lastChar) > -1 || lastChar == '.')
-				equation = equation.replace(/.$/, '');
+	for(var i = 0; i < keys.length; i++) {
+		keys[i].onclick = function() {
+			var input = document.querySelector('#screen');
+			var inputVal = input.innerHTML;
+			var btnVal = this.innerHTML;
+
+			if(btnVal == 'C') {
+				input.innerHTML = '';
+				decimalAdded = false;
+			}
 			
-			if(equation)
-				input.innerHTML = eval(equation);
+			else if(btnVal == '=') {
+				var equation = inputVal;
+				var lastChar = equation[equation.length - 1];
+									
+				if(operators.indexOf(lastChar) > -1 || lastChar == '.')
+					equation = equation.replace(/.$/, '');
 				
-			decimalAdded = false;
-		}
-		
-		else if(operators.indexOf(btnVal) > -1) {
-			var lastChar = inputVal[inputVal.length - 1];
-			
-			if(inputVal != '' && operators.indexOf(lastChar) == -1) 
-				input.innerHTML += btnVal;
-			
-			else if(inputVal == '' && btnVal == '-') 
-				input.innerHTML += btnVal;
-			
-			if(operators.indexOf(lastChar) > -1 && inputVal.length > 1) {
-				input.innerHTML = inputVal.replace(/.$/, btnVal);
+				if(equation)
+					input.innerHTML = eval(equation);
+					
+				decimalAdded = false;
 			}
 			
-			decimalAdded =false;
-		}
-		
-		else if(btnVal == '.') {
-			if(!decimalAdded) {
-				input.innerHTML += btnVal;
-				decimalAdded = true;
+			else if(operators.indexOf(btnVal) > -1) {
+				var lastChar = inputVal[inputVal.length - 1];
+				
+				if(inputVal != '' && operators.indexOf(lastChar) == -1) 
+					input.innerHTML += btnVal;
+				
+				else if(inputVal == '' && btnVal == '-') 
+					input.innerHTML += btnVal;
+				
+				if(operators.indexOf(lastChar) > -1 && inputVal.length > 1) {
+					input.innerHTML = inputVal.replace(/.$/, btnVal);
+				}
+				
+				decimalAdded =false;
 			}
-		}
-		
-		else {
-			input.innerHTML += btnVal;
-		}
-		if (inputVal.length > 15) {
-            alert('Screen is full!');
-            input.innerHTML = inputVal.substring(0,inputVal.length -2);
-        }
-	} 
+			
+			else if(btnVal == '.') {
+				if(!decimalAdded) {
+					input.innerHTML += btnVal;
+					decimalAdded = true;
+				}
+			}
+			
+			else {
+				input.innerHTML += btnVal;
+			}
+		} 
+	}
 }
